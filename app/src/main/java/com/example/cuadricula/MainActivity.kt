@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -27,6 +28,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.cuadricula.data.DataSource
 import com.example.cuadricula.model.Topic
 import com.example.cuadricula.ui.theme.CuadriculaTheme
@@ -51,8 +53,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun TopicApp() {
     TopicList(
-        topicList = DataSource.topics,
-        modifier = Modifier.padding(dimensionResource(R.dimen.padding_pequeño))
+        topicList = DataSource.topics
     )
 }
 
@@ -61,6 +62,7 @@ fun TopicList(topicList: List<Topic>, modifier: Modifier = Modifier) {
     LazyVerticalGrid(columns = GridCells.Fixed(2),
         verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_pequeño)),
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_pequeño)),
+        contentPadding = PaddingValues(8.dp),
         modifier = modifier) {
         items(topicList) { topic ->
             TopicCard(
